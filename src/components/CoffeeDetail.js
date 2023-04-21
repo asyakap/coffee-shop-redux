@@ -8,12 +8,12 @@ function CoffeeDetail(props){
   return (
     <React.Fragment>
       <h1>Coffee Details</h1><br />
-      <h3>{item.name} - {item.origin}</h3><br />
-      <p><em>Roast - {item.roast}</em></p><br />
-      <p><em>Price - {item.price}</em></p><br />
-      <p><em>Remaining - {item.weight}lb.</em></p><br />
+      <h3>{coffee.name} - {coffee.origin}</h3><br />
+      <p><em>Roast - {coffee.roast}</em></p><br />
+      <p><em>Price - {coffee.price}</em></p><br />
+      <p><em>Remaining - {coffee.weight}lb.</em></p><br />
       <button onClick={ props.onClickingEdit }>Update</button> <br />
-      <button onClick={()=> onClickingDelete(item.id) }>Delete</button> 
+      <button onClick={()=> onClickingDelete(coffee.id) }>Delete</button> 
       <hr/>
     </React.Fragment>
   );
