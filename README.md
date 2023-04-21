@@ -7,7 +7,7 @@ This web page allows user to add coffee bags of different coffee sorts, see the 
 
 # Component Diagram
 
-![component diagram](diagram.jpg)
+![component diagram](Diagram.jpg)
 
 # Getting Started with Create React App
 
