@@ -1,3 +1,14 @@
+# Coffee Shop
+
+### By Asia Kaplanyan
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This web page allows user to add coffee bags of different coffee sorts, see the list of coffee bags, see details/update/delete coffee bag, as well as buy one pound.
+
+# Component Diagram
+
+![component diagram](diagram.jpg)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
