@@ -3,7 +3,6 @@ import NewCoffeeForm from './NewCoffeeForm';
 import CoffeeList from './CoffeeList';
 import EditCoffeeForm from './EditCoffeeForm';
 import CoffeeDetail from './CoffeeDetail';
-import Coffee from './Coffee';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class CoffeeControl extends React.Component {

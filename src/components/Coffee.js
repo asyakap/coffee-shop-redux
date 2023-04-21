@@ -13,31 +13,81 @@ function Coffee(props){
     <hr></hr>
     </ >
   } else if (props.weight < 10 & props.weight > 0) {
+    if (props.price > 9) {
     coffeeDisplay =
     <>
     <h3>Name: {props.name}</h3>
     <h3 style={{color: 'red'}}>Almost Empty</h3>
     <li>Origin: {props.origin}</li><br />
     <li>Roast: {props.roast}</li><br />
-    <li>Price per pound: ${props.price}</li><br />
+    <li>Price per pound: <span style={{color: 'red'}}> ${props.price}</span></li><br />
     <li>Quantity Available: {props.weight}lb.</li>
     <br />
     </>
+    }
+    else if (props.price > 5 && props.price < 10) {
+      coffeeDisplay =
+      <>
+      <h3>Name: {props.name}</h3>
+      <h3 style={{color: 'red'}}>Almost Empty</h3>
+      <li>Origin: {props.origin}</li><br />
+      <li>Roast: {props.roast}</li><br />
+      <li>Price per pound: <span style={{color: 'orange'}}> ${props.price}</span></li><br />
+      <li>Quantity Available: {props.weight}lb.</li>
+      <br />
+      </>
+    }
+    else {
+      coffeeDisplay =
+      <>
+      <h3>Name: {props.name}</h3>
+      <h3 style={{color: 'red'}}>Almost Empty</h3>
+      <li>Origin: {props.origin}</li><br />
+      <li>Roast: {props.roast}</li><br />
+      <li>Price per pound: <span style={{color: 'green'}}> ${props.price}</span></li><br />
+      <li>Quantity Available: {props.weight}lb.</li>
+      <br />
+      </>
+    }
     coffeeBuy = 
     <>
     <button className="btn btn-block btn-lg btn-dark">Buy</button>
     <hr></hr>
     </>
   } else {
-    coffeeDisplay =
-    <>
-    <h3>Name: {props.name}</h3><br />
-    <li>Origin: {props.origin}</li><br />
-    <li>Roast: {props.roast}</li><br />
-    <li>Price per pound: ${props.price}</li><br />
-    <li>Quantity Available: {props.weight}lb.</li>
-    <br />
-    </>
+    if (props.price > 9) {
+      coffeeDisplay =
+      <>
+      <h3>Name: {props.name}</h3>
+      <li>Origin: {props.origin}</li><br />
+      <li>Roast: {props.roast}</li><br />
+      <li>Price per pound: <span style={{color: 'red'}}> ${props.price}</span></li><br />
+      <li>Quantity Available: {props.weight}lb.</li>
+      <br />
+      </>
+      }
+      else if (props.price > 5 && props.price < 10) {
+        coffeeDisplay =
+        <>
+        <h3>Name: {props.name}</h3>
+        <li>Origin: {props.origin}</li><br />
+        <li>Roast: {props.roast}</li><br />
+        <li>Price per pound: <span style={{color: 'orange'}}> ${props.price}</span></li><br />
+        <li>Quantity Available: {props.weight}lb.</li>
+        <br />
+        </>
+      }
+      else {
+        coffeeDisplay =
+        <>
+        <h3>Name: {props.name}</h3>
+        <li>Origin: {props.origin}</li><br />
+        <li>Roast: {props.roast}</li><br />
+        <li>Price per pound: <span style={{color: 'green'}}> ${props.price}</span></li><br />
+        <li>Quantity Available: {props.weight}lb.</li>
+        <br />
+        </>
+      }
     coffeeBuy = 
     <>
     <button className="btn btn-block btn-lg btn-dark">Buy</button>

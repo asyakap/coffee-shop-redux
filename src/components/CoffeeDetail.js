@@ -6,6 +6,7 @@ function CoffeeDetail(props){
   const { coffee, onClickingDelete } = props; 
 
   return (
+
     <React.Fragment>
       <hr/>
       <h4>Coffee Details</h4><br />
