@@ -7,7 +7,7 @@ function EditCoffeeForm (props) {
 
   function handleEditCoffeeFormSubmission(event) {
     event.preventDefault();
-    props.onEditCoffee({name: event.target.name.value, price: event.target.price.value, weight: event.target.weight.value, origin: event.target.origin.value, roast: event.target.roast.value, id: v4()});
+    props.onEditCoffee({name: event.target.name.value, price: event.target.price.value, weight: event.target.weight.value, origin: event.target.origin.value, roast: event.target.roast.value, id: coffee.id});
   }
 
   return (

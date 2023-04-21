@@ -71,7 +71,7 @@ class CoffeeControl extends React.Component {
   handleBuyClick = (id) => {
     console.log("we are here");
     let selectedCoffee = this.state.mainCoffeeList.find(coffee => coffee.id === id);
-    selectedCoffee.quantity -= 1;
+    selectedCoffee.weight -= 1;
     const newMainCoffeeList = this.state.mainCoffeeList.map((coffee) => { return coffee.id === id ? selectedCoffee : coffee});
     console.log(selectedCoffee.quantity);
     this.setState({mainCoffeeList: newMainCoffeeList});
