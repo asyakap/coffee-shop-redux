@@ -28,7 +28,9 @@ export default function ReusableForm(props) {
           name='roast'
           placeholder='Light, medium or dark' /><br />
           <br />
-        <button type='submit'>{props.buttonText}</button>
+        <button className="btn btn-block btn-lg btn-dark" type='submit'>{props.buttonText}</button>
+        <br />
+        <br />
       </form>
     </React.Fragment>
   );

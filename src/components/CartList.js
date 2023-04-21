@@ -4,9 +4,15 @@ import PropTypes from "prop-types";
 
 
 function CartList(props) {
+
+  let total = 0;
+  props.cartList.forEach(element => {
+    total = parseInt(element.price) + total;
+  });
+
   return (
     <React.Fragment>
-      <hr/>
+      <hr></hr>
       <h3>Cart:</h3>
       {props.cartList.map((coffee) =>
         <Cart
@@ -15,6 +21,7 @@ function CartList(props) {
           id={coffee.id}
           key={coffee.id}/>
       )}
+      <h4>Total: ${total}</h4>
     </React.Fragment>
   );
 }
