@@ -14,13 +14,17 @@ export default function ReusableForm(props) {
           name='price'
           placeholder='Price per pound' /><br />
         <input
+          type='number'
+          name='weight'
+          placeholder='Weight of the bag' /><br />
+        <input
           type='text'
           name='origin'
           placeholder='Coffee Origin' /><br />
         <input
           type='text'
           name='roast'
-          placeholder='light, medium or dark' /><br />
+          placeholder='Light, medium or dark' /><br />
         <button type='submit'>{props.buttonText}</button>
       </form>
     </React.Fragment>
