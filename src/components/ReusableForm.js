@@ -5,6 +5,8 @@ export default function ReusableForm(props) {
   return (
     <React.Fragment>
       <form onSubmit={props.formSubmissionHandler}>
+        <br />
+        <h5>Please enter details of a new Coffee bag:</h5>
         <input
           type='text'
           name='name'
@@ -25,6 +27,7 @@ export default function ReusableForm(props) {
           type='text'
           name='roast'
           placeholder='Light, medium or dark' /><br />
+          <br />
         <button type='submit'>{props.buttonText}</button>
       </form>
     </React.Fragment>

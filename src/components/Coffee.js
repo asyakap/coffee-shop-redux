@@ -16,10 +16,12 @@ function Coffee(props){
     <h3>Name: {props.name}</h3><br />
     <li>Origin: {props.origin}</li><br />
     <li>Roast: {props.roast}</li><br />
-    <li>Price per pound: {props.price}</li><br />
-    <li>Quantity Available: {props.weight}</li>
+    <li>Price per pound: ${props.price}</li><br />
+    <li>Quantity Available: {props.weight}lb.</li>
     <button className="btn btn-block btn-lg btn-dark" onClick={handleClick}>Buy</button>
+    <hr></hr>
     </>
+
   }
 
   return (
