@@ -3,11 +3,9 @@ import PropTypes from "prop-types";
 
 function Coffee(props){
 
-  function handleClick() {
-    return props.onBuyCoffee(props.id);
-  }
 
   let coffeeDisplay = null;
+  let coffeeBuy = null;
   if (props.weight <= 0) {
     coffeeDisplay = 
     <>
@@ -18,13 +16,16 @@ function Coffee(props){
     coffeeDisplay =
     <>
     <h3>Name: {props.name}</h3>
-    <h3 style={{color: 'red'}}>Almost out of stock</h3>
+    <h3 style={{color: 'red'}}>Almost Empty</h3>
     <li>Origin: {props.origin}</li><br />
     <li>Roast: {props.roast}</li><br />
     <li>Price per pound: ${props.price}</li><br />
     <li>Quantity Available: {props.weight}lb.</li>
     <br />
-    <button className="btn btn-block btn-lg btn-dark" onClick={handleClick}>Buy</button>
+    </>
+    coffeeBuy = 
+    <>
+    <button className="btn btn-block btn-lg btn-dark">Buy</button>
     <hr></hr>
     </>
   } else {
@@ -36,7 +37,10 @@ function Coffee(props){
     <li>Price per pound: ${props.price}</li><br />
     <li>Quantity Available: {props.weight}lb.</li>
     <br />
-    <button className="btn btn-block btn-lg btn-dark" onClick={handleClick}>Buy</button>
+    </>
+    coffeeBuy = 
+    <>
+    <button className="btn btn-block btn-lg btn-dark">Buy</button>
     <hr></hr>
     </>
 
@@ -46,6 +50,9 @@ function Coffee(props){
     <React.Fragment>
       <div onClick={() => props.onCoffeeSelect(props.id)}>
       {coffeeDisplay}
+      </div>
+      <div onClick={() => props.onBuyCoffee(props.id)}>
+      {coffeeBuy}
       </div>
     </React.Fragment>
   );
@@ -58,7 +65,7 @@ Coffee.propTypes = {
   origin: PropTypes.string,
   roast: PropTypes.string,
   id: PropTypes.string,
-  onBuyItem: PropTypes.func,
+  onBuyCoffee: PropTypes.func,
   onCoffeeSelect: PropTypes.func
 }
 
