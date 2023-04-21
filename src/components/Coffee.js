@@ -6,10 +6,11 @@ function Coffee(props){
 
   let coffeeDisplay = null;
   let coffeeBuy = null;
+  
   if (props.weight <= 0) {
     coffeeDisplay = 
     <>
-    <h4>{props.name} is <strong>Out of Stock</strong></h4>
+    <h3>{props.name} is <strong style={{color: 'red'}}>Out of Stock</strong></h3>
     <hr></hr>
     </ >
   } else if (props.weight < 10 & props.weight > 0) {

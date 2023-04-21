@@ -1,6 +1,7 @@
 import React from 'react';
 import NewCoffeeForm from './NewCoffeeForm';
 import CoffeeList from './CoffeeList';
+import CartList from './CartList';
 import EditCoffeeForm from './EditCoffeeForm';
 import CoffeeDetail from './CoffeeDetail';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -12,6 +13,7 @@ class CoffeeControl extends React.Component {
     this.state = {
       formVisibleOnPage: false,
       mainCoffeeList: [],
+      cartList: [],
       selectedCoffee: null,
       editing: false
     };
@@ -66,16 +68,18 @@ class CoffeeControl extends React.Component {
   }
 
 
-  handleBuyClick = (id) => {
+  handleBuyClick = (id, cartList) => {
     let selectedCoffee = this.state.mainCoffeeList.find(coffee => coffee.id === id);
     selectedCoffee.weight -= 1;
     const newMainCoffeeList = this.state.mainCoffeeList.map((coffee) => { return coffee.id === id ? selectedCoffee : coffee});
     this.setState({mainCoffeeList: newMainCoffeeList});
+    this.setState({cartList: this.state.cartList.concat(selectedCoffee)});
   }
 
 
   render() {
     let currentlyVisibleState = null;
+    let currentlyVisibleState1 = null;
     let buttonText = null; 
     if (this.state.editing ) {      
       currentlyVisibleState = <EditCoffeeForm coffee = {this.state.selectedCoffee} onEditCoffee = {this.handleEditingCoffeeInList} />
@@ -96,10 +100,13 @@ class CoffeeControl extends React.Component {
       onBuyCoffee = { this.handleBuyClick}
       onCoffeeSelect={this.handleChangingSelectedCoffee}   />;
       buttonText = "Add Coffee"; 
+      currentlyVisibleState1 = <CartList
+      cartList={this.state.cartList} />;
     }
     return (
       <React.Fragment>
         {currentlyVisibleState}
+        {currentlyVisibleState1}
         <button onClick={this.handleClick}>{buttonText}</button> 
       </React.Fragment>
     );

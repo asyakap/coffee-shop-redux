@@ -19,6 +19,14 @@ function CoffeeList(props) {
           id={coffee.id}
           key={coffee.id}/>
       )}
+      <h3>Cart:</h3>
+      {props.cartList.map((coffee) =>
+        <Coffee
+          name={coffee.name}
+          price={coffee.price}
+          id={coffee.id}
+          key={coffee.id}/>
+      )}
     </React.Fragment>
   );
 }
