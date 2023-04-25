@@ -7,7 +7,7 @@ function NewCoffeeForm(props){
 
   function handleNewCoffeeFormSubmission(event) {
     event.preventDefault();
-    props.onNewCoffeeCreation({name: event.target.name.value, price: event.target.price.value, weight: event.target.weight.value, origin: event.target.origin.value, roast: event.target.roast.value, id: v4()});
+    props.onNewCoffeeCreation({name: event.target.name.value, price: parseInt(event.target.price.value), weight: parseInt(event.target.weight.value), origin: event.target.origin.value, roast: event.target.roast.value, id: v4()});
   }
 
   return (
