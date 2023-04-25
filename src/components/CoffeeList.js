@@ -7,7 +7,7 @@ function CoffeeList(props) {
   return (
     <React.Fragment>
       <hr/>
-      {props.coffeeList.map((coffee) =>
+      {Object.values(props.coffeeList).map((coffee) =>
         <Coffee
           name={coffee.name}
           origin={coffee.origin}
@@ -24,7 +24,7 @@ function CoffeeList(props) {
 }
 
 CoffeeList.propTypes = {
-  coffeeList: PropTypes.array,
+  coffeeList: PropTypes.object,
   onBuyCoffee: PropTypes.func,
   onCoffeeSelect: PropTypes.func
 };

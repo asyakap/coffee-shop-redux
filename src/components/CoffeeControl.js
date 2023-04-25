@@ -5,6 +5,8 @@ import CartList from './CartList';
 import EditCoffeeForm from './EditCoffeeForm';
 import CoffeeDetail from './CoffeeDetail';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { connect } from 'react-redux';
+import PropTypes from "prop-types";
 
 class CoffeeControl extends React.Component {
 
@@ -12,7 +14,6 @@ class CoffeeControl extends React.Component {
     super(props);
     this.state = {
       formVisibleOnPage: false,
-      mainCoffeeList: [],
       cartList: [],
       selectedCoffee: null,
       editing: false
@@ -34,9 +35,13 @@ class CoffeeControl extends React.Component {
   }
 
   handleDeletingCoffee = (id) => {
-    const newMainCoffeeList = this.state.mainCoffeeList.filter(coffee => coffee.id !== id);
+    const { dispatch } = this.props;
+    const action = {
+      type: 'DELETE_COFFEE',
+      id: id
+    }
+    dispatch(action);
     this.setState({
-      mainCoffeeList: newMainCoffeeList,
       selectedCoffee: null
     });
   }
@@ -46,33 +51,60 @@ class CoffeeControl extends React.Component {
   }
 
   handleEditingCoffeeInList = (coffeeToEdit) => {
-    const editedMainCoffeeList = this.state.mainCoffeeList
-      .filter(coffee => coffee.id !== this.state.selectedCoffee.id)
-      .concat(coffeeToEdit);
+    const { dispatch } = this.props;
+    const { id, name, price, weight, origin, roast } = coffeeToEdit;
+    const action = {
+      type: 'ADD_COFFEE',
+      id: id,
+      name: name,
+      price: price, 
+      weight: weight,
+      origin: origin, 
+      roast: roast,
+    }
+    dispatch(action);
     this.setState({
-      mainCoffeeList: editedMainCoffeeList,
       editing: false,
       selectedCoffee: null
     });
   }
 
   handleAddingNewCoffeeToList = (newCoffee) => {
-    const newMainCoffeeList = this.state.mainCoffeeList.concat(newCoffee);
-    this.setState({mainCoffeeList: newMainCoffeeList});
+    const { dispatch } = this.props;
+    const { id, name, price, weight, origin, roast } = newCoffee;
+    const action = {
+      type: 'ADD_COFFEE',
+      id: id,
+      name: name,
+      price: price, 
+      weight: weight,
+      origin: origin, 
+      roast: roast,
+    }
+    dispatch(action);
     this.setState({formVisibleOnPage: false});
   }
 
   handleChangingSelectedCoffee = (id) => {
-    let selectedCoffee = this.state.mainCoffeeList.filter(coffee => coffee.id === id)[0];
+    let selectedCoffee = this.props.mainCoffeeList[id];
     this.setState({selectedCoffee: selectedCoffee});
   }
 
 
   handleBuyClick = (id, cartList) => {
-    let selectedCoffee = this.state.mainCoffeeList.find(coffee => coffee.id === id);
+    const { dispatch } = this.props;
+    let selectedCoffee = this.props.mainCoffeeList[id];
     selectedCoffee.weight -= 1;
-    const newMainCoffeeList = this.state.mainCoffeeList.map((coffee) => { return coffee.id === id ? selectedCoffee : coffee});
-    this.setState({mainCoffeeList: newMainCoffeeList});
+    const action = {
+      type: 'BUY_COFFEE',
+      id: id,
+      name: selectedCoffee.name,
+      price: selectedCoffee.price, 
+      weight: selectedCoffee.weight,
+      origin: selectedCoffee.origin, 
+      roast: selectedCoffee.roast,
+    }
+    dispatch(action);
     this.setState({cartList: this.state.cartList.concat(selectedCoffee)});
   }
 
@@ -96,7 +128,7 @@ class CoffeeControl extends React.Component {
     } else {
       currentlyVisibleState = <CoffeeList 
       coffee={this.state.selectedCoffee} 
-      coffeeList={this.state.mainCoffeeList}
+      coffeeList={this.props.mainCoffeeList}
       onBuyCoffee = { this.handleBuyClick}
       onCoffeeSelect={this.handleChangingSelectedCoffee}   />;
       buttonText = "Add Coffee"; 
@@ -113,5 +145,17 @@ class CoffeeControl extends React.Component {
   }
 
 }
+
+CoffeeControl.propTypes = {
+  mainCoffeeList: PropTypes.object
+};
+
+const mapStateToProps = state => {
+  return {
+    mainCoffeeList: state
+  }
+}
+
+CoffeeControl = connect(mapStateToProps)(CoffeeControl);
 
 export default CoffeeControl;
